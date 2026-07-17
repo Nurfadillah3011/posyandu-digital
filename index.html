@@ -1,0 +1,1131 @@
+<!doctype html>
+<html lang="id">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description"
+    content="Website Resmi Posyandu Desa Bunga - menaungi dua lokasi pelayanan, Posyandu Cut Mutia (Dusun Banga-Banga) dan Posyandu Emisaelan (Dusun Labumpung). Informasi sejarah, struktur organisasi, pelayanan terpadu 5 langkah, kader aktif, dokumen publikasi, dan kontak bidan desa." />
+  <title>Posyandu Desa Bunga</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* ── Tambahan: Data Poktan, Struktur Kelompok, Tabel Data Desa Bunga ── */
+    .poktan-summary-card,
+    .village-data-card {
+      margin: 1.75rem auto;
+      max-width: 980px;
+    }
+
+    .poktan-summary-head {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.6rem;
+      margin-bottom: 1rem;
+    }
+
+    .poktan-summary-head h3 {
+      margin: 0;
+    }
+
+    .poktan-table-wrap,
+    .village-table-wrap {
+      overflow-x: auto;
+      border-radius: 14px;
+      border: 1px solid var(--border, #e3e0d6);
+    }
+
+    .poktan-table,
+    .village-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.92rem;
+      min-width: 420px;
+    }
+
+    .village-table {
+      min-width: 780px;
+    }
+
+    .poktan-table thead tr,
+    .village-table thead tr {
+      background: var(--red, #e5484d);
+      color: #fff;
+    }
+
+    .poktan-table th,
+    .poktan-table td,
+    .village-table th,
+    .village-table td {
+      padding: 0.6rem 0.75rem;
+      text-align: center;
+      border-bottom: 1px solid var(--border, #ece8dc);
+    }
+
+    .poktan-table td:nth-child(2) {
+      text-align: left;
+      font-weight: 600;
+    }
+
+    .poktan-row.is-clickable {
+      cursor: pointer;
+      transition: background 0.15s ease;
+    }
+
+    .poktan-row.is-clickable:hover,
+    .poktan-row.is-clickable:focus-visible {
+      background: var(--sand, #fbf3df);
+      outline: none;
+    }
+
+    .poktan-total-row td,
+    .village-total-row td {
+      font-weight: 700;
+      background: var(--sand, #fbf3df);
+    }
+
+    .sk-badge {
+      display: inline-block;
+      padding: 0.15rem 0.6rem;
+      border-radius: 999px;
+      background: var(--green-soft, #e3f6e8);
+      color: var(--green-strong, #1f7a3d);
+      font-size: 0.78rem;
+      font-weight: 700;
+    }
+
+    .poktan-hint {
+      margin: 0.75rem 0 0;
+      font-size: 0.85rem;
+      color: var(--muted, #7a7566);
+      text-align: center;
+    }
+
+    .org-advisors-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.75rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .org-advisors-row .org-node {
+      min-width: 200px;
+    }
+
+    .village-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .village-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .village-stat-card {
+      background: var(--sand, #fbf3df);
+      border-radius: 14px;
+      padding: 0.9rem 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+    }
+
+    .village-stat-value {
+      font-family: var(--font-serif, "Lora", serif);
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--green-strong, #1f7a3d);
+    }
+
+    .village-stat-label {
+      font-weight: 700;
+      font-size: 0.85rem;
+    }
+
+    .village-stat-sub {
+      font-size: 0.78rem;
+      color: var(--muted, #7a7566);
+    }
+
+    .village-stat-card--mix {
+      grid-column: 1 / -1;
+    }
+
+    .village-mix-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+      gap: 0.5rem;
+      margin-top: 0.4rem;
+    }
+
+    .village-mix-item {
+      background: #fff;
+      border-radius: 10px;
+      padding: 0.4rem 0.2rem;
+      text-align: center;
+    }
+
+    .village-mix-item strong {
+      display: block;
+      font-size: 1.05rem;
+      color: var(--blue-strong, #1d5fa8);
+    }
+
+    .village-mix-item small {
+      font-size: 0.65rem;
+      color: var(--muted, #7a7566);
+      letter-spacing: 0.02em;
+    }
+
+    .cadre-role-tag {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 500;
+      color: var(--muted, #7a7566);
+    }
+
+    .tone-red {
+      background: rgba(229, 72, 77, 0.12);
+      color: #b3231f;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Playful Background Leaf/Heart Accents -->
+  <div class="leaf-decor leaf-decor-1" aria-hidden="true">
+    <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M5 19c7 1 13-5 14-14-9 1-15 7-14 14z" />
+      <path d="M5 19c3-4 7-7 14-9" />
+    </svg>
+  </div>
+  <div class="leaf-decor leaf-decor-2" aria-hidden="true">
+    <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 20c8 0 12-5 16-16-10 1-16 7-16 16z" />
+      <path d="M7 17c2-3 5-5 10-8" />
+    </svg>
+  </div>
+  <div class="leaf-decor leaf-decor-3" aria-hidden="true">
+    <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M5 20c6-1 11-6 14-14-8 2-13 7-14 14z" />
+      <path d="M8 15c2-2 4-4 8-6" />
+    </svg>
+  </div>
+
+  <header class="site-header">
+    <a class="brand" href="#beranda" aria-label="Beranda Posyandu Desa Bunga">
+      <span class="brand-mark">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path
+            d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+        </svg>
+      </span>
+      <span>
+        <strong>Posyandu</strong>
+        <small>Cut Mutia &amp; Emisaelan</small>
+      </span>
+    </a>
+
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+      Menu
+    </button>
+
+    <nav id="site-nav" class="site-nav" aria-label="Navigasi utama">
+      <a href="#beranda">Beranda</a>
+      <a href="#tentang">Tentang</a>
+      <a href="#layanan">Layanan</a>
+      <a href="#jadwal">Jadwal</a>
+      <a href="#galeri">Galeri</a>
+      <details class="nav-dropdown">
+        <summary>Lainnya</summary>
+        <div class="nav-dropdown-menu">
+          <a href="#sejarah">Sejarah</a>
+          <a href="#organisasi">Organisasi</a>
+          <a href="#edukasi">Edukasi &amp; Kalkulator</a>
+          <a href="#absensi">Absensi Kader</a>
+          <a href="#dokumen">Dokumen</a>
+        </div>
+      </details>
+      <a href="#kontak" class="btn btn-cta">Hubungi Bidan ➜</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section id="beranda" class="hero section reveal">
+      <div class="hero-copy">
+        <span class="eyebrow">
+          <span class="eyebrow-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path
+                d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+            </svg>
+          </span>
+          Kasih Sayang &amp; Kesehatan Anak
+        </span>
+        <h1>Menjaga Tumbuh Kembang, Membangun Generasi Gemilang</h1>
+        <p>
+          Selamat datang di Posyandu Desa Bunga. Kami berkomitmen untuk mendampingi ibu
+          hamil dan menjaga tumbuh kembang balita dengan penuh kehangatan, kenyamanan, dan pelayanan kesehatan terpadu
+          berbasis digital.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#layanan">Lihat Layanan ➜</a>
+          <a class="btn btn-secondary" href="#dokumen">
+            <span class="btn-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2a8 8 0 0 0-8 8c0 5.25 8 12 8 12s8-6.75 8-12a8 8 0 0 0-8-8z" />
+                <path d="M12 9a3 3 0 1 0 0.01 0z" />
+              </svg>
+            </span>
+            Buku Panduan &amp; SOP
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-image-wrap">
+        <img src="hero_illustration.png" alt="Ilustrasi Posyandu Desa Bunga" class="hero-img" />
+        <div class="hero-floating-card floating-card-1">
+          <span class="floating-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 11a4 4 0 1 0-4-4" />
+              <path d="M8 13c0 2.5 1.8 5 4 5s4-2.5 4-5" />
+              <path d="M9 18c0 1.7 1.3 3 3 3s3-1.3 3-3" />
+            </svg>
+          </span>
+          <div>
+            <strong>Bebas Stunting</strong>
+            <small>Pantau TB/BB Rutin</small>
+          </div>
+        </div>
+        <div class="hero-floating-card floating-card-2">
+          <span class="floating-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 11l4 4" />
+              <path d="M13 7l4 4" />
+              <path d="M14.5 5.5l4 4" />
+              <path d="M3 21l6-6" />
+              <path d="M14 3l7 7" />
+            </svg>
+          </span>
+          <div>
+            <strong>Imunisasi Lengkap</strong>
+            <small>Jadwal Teratur</small>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4 Pillars Section (Color Tones Matching preschool cards) -->
+    <section class="pillars-section reveal">
+      <div class="grid four-col">
+        <!-- Card 1: Red -->
+        <article class="pillar-card card-red">
+          <div class="pillar-icon-wrap">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path
+                d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+            </svg>
+          </div>
+          <h3>Kesehatan Ibu &amp; Anak</h3>
+          <p>Pemantauan kesehatan berkala bagi ibu hamil, ibu nifas, menyusui, serta pemeriksaan bayi lahir secara
+            teratur.</p>
+          <div class="card-indicator-line"></div>
+        </article>
+
+        <!-- Card 2: Green -->
+        <article class="pillar-card card-green">
+          <div class="pillar-icon-wrap">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2a10 10 0 0 1 10 10c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2z" />
+              <path d="M12 6v12" />
+              <path d="M8 10h8" />
+            </svg>
+          </div>
+          <h3>Pencegahan Stunting</h3>
+          <p>Pemeriksaan berat badan, tinggi badan, dan lingkar kepala berkala untuk mendeteksi serta mencegah stunting
+            sejak dini.</p>
+          <div class="card-indicator-line"></div>
+        </article>
+
+        <!-- Card 3: Yellow -->
+        <article class="pillar-card card-yellow">
+          <div class="pillar-icon-wrap">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+            </svg>
+          </div>
+          <h3>Imunisasi &amp; Vitamin</h3>
+          <p>Pemberian imunisasi dasar lengkap, kapsul Vitamin A merah &amp; biru, serta obat cacing gratis untuk
+            kekebalan tubuh balita.</p>
+          <div class="card-indicator-line"></div>
+        </article>
+
+        <!-- Card 4: Blue -->
+        <article class="pillar-card card-blue">
+          <div class="pillar-icon-wrap">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+              <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+            </svg>
+          </div>
+          <h3>Edukasi &amp; Gizi</h3>
+          <p>Konseling gizi seimbang, kelas pola asuh (parenting), penyuluhan ASI eksklusif, serta Pemberian Makanan
+            Tambahan (PMT).</p>
+          <div class="card-indicator-line"></div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Welcome to Posyandu Section -->
+    <section id="tentang" class="section welcome-section reveal">
+      <div class="welcome-grid">
+        <div class="welcome-image-wrap">
+          <img src="welcome_illustration.png" alt="Pemeriksaan Tumbuh Kembang" class="welcome-img" />
+          <div class="welcome-quote">
+            <p>"Setiap anak tumbuh dengan keistimewaannya sendiri. Bersama kita jaga nutrisi dan masa depan mereka."</p>
+            <span class="heart-bullet" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path
+                  d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+              </svg>
+            </span>
+          </div>
+        </div>
+        <div class="welcome-content">
+          <span class="eyebrow">
+            <span class="eyebrow-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 19c7 1 13-5 14-14-9 1-15 7-14 14z" />
+              </svg>
+            </span>
+            Selamat Datang di Posyandu Kami
+          </span>
+          <h2>Mengabdi dengan Hati, Menjaga Generasi Desa Bunga</h2>
+          <div class="flower-divider">
+            <span class="line"></span>
+            <span class="flower" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 4.5c1.5 0 2.5 1.1 2.5 2.5S13.5 9.5 12 9.5 9.5 8.4 9.5 7 10.5 4.5 12 4.5z" />
+                <path d="M12 14.5c1.5 0 2.5 1.1 2.5 2.5S13.5 19.5 12 19.5 9.5 18.4 9.5 17 10.5 14.5 12 14.5z" />
+                <path d="M7 12c0-1.5 1.1-2.5 2.5-2.5S12 10.5 12 12s-1.1 2.5-2.5 2.5S7 13.5 7 12z" />
+                <path d="M14.5 12c0-1.5 1.1-2.5 2.5-2.5s2.5 1.1 2.5 2.5-1.1 2.5-2.5 2.5-2.5-1.1-2.5-2.5z" />
+              </svg>
+            </span>
+            <span class="line"></span>
+          </div>
+          <p>
+            Posyandu Desa Bunga menaungi dua lokasi pelayanan, yaitu Posyandu Cut Mutia di Dusun Banga-Banga dan
+            Posyandu Emisaelan di Dusun Labumpung. Keduanya berkomitmen penuh untuk mengawal kesehatan ibu hamil, ibu
+            menyusui, serta mendukung tumbuh kembang anak sejak usia dini. Didukung oleh kader terlatih, bidan desa
+            yang siap sedia, serta sistem administrasi posyandu digital yang modern dan transparan, kami percaya
+            pelayanan ramah anak dapat mewujudkan masa depan anak yang cerdas dan bebas dari risiko stunting.
+          </p>
+          <div class="stats-row">
+            <div class="stat-card">
+              <strong>150+</strong>
+              <span>Balita Terdata &amp; Terlayani</span>
+            </div>
+            <div class="stat-card">
+              <strong>15+</strong>
+              <span>Kader &amp; Bidan Desa Aktif</span>
+            </div>
+            <div class="stat-card">
+              <strong>10+</strong>
+              <span>Tahun Setia Mengabdi</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sejarah Section -->
+    <section id="sejarah" class="section history-section reveal">
+      <div class="section-heading text-center">
+        <span class="eyebrow">Sejarah Posyandu</span>
+        <h2>Perjalanan Pengabdian Posyandu Desa Bunga</h2>
+      </div>
+      <div class="timeline" id="timeline"></div>
+    </section>
+
+    <!-- Organisasi & Kader Section -->
+    <section id="organisasi" class="section organization-section reveal">
+      <div class="section-heading text-center">
+        <span class="eyebrow">
+          <span class="eyebrow-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="7" r="3" />
+              <path d="M5 21v-2a5 5 0 0 1 5-5h4a5 5 0 0 1 5 5v2" />
+            </svg>
+          </span>
+          Struktur Organisasi
+        </span>
+        <h2>Struktur Kepengurusan Posyandu</h2>
+        <p class="heading-subtext">
+          Struktur kelompok kegiatan (Poktan) binaan BKKBN di Desa Bunga, Kecamatan Mattiro Bulu, Kabupaten
+          Pinrang — mencakup BKB Cinta, BKR Kasih, BKL Sipatuo, PPKBD, lengkap dengan data kependudukan dan KB
+          Dusun Banga-Banga &amp; Dusun Labumpung.
+        </p>
+      </div>
+
+      <!-- Ringkasan Data Poktan -->
+      <article class="card poktan-summary-card">
+        <div class="poktan-summary-head">
+          <h3>Data Poktan Desa Bunga</h3>
+          <span class="org-chart-badge tone-red">Kec. Mattiro Bulu · Kab. Pinrang</span>
+        </div>
+        <div class="poktan-table-wrap">
+          <table class="poktan-table" id="poktan-table">
+            <thead>
+              <tr>
+                <th>No</th>
+                <th>Poktan</th>
+                <th>Jumlah</th>
+                <th>SK</th>
+              </tr>
+            </thead>
+            <tbody id="poktan-table-body"></tbody>
+            <tfoot id="poktan-table-foot"></tfoot>
+          </table>
+        </div>
+        <p class="poktan-hint">Klik salah satu poktan untuk melihat struktur kepengurusannya ↓</p>
+      </article>
+
+      <!-- Tabs interaktif struktur kepengurusan tiap kelompok -->
+      <div class="org-chart-tabs" id="org-tabs" role="tablist" aria-label="Pilih struktur kelompok"></div>
+      <div class="org-chart-panels" id="org-panels"></div>
+
+      <article class="card cadres-card cadres-card--full">
+        <h3>Daftar Nama Kader Aktif</h3>
+        <p>
+          Kader dan pengurus aktif kelompok kegiatan (Poktan) binaan Posyandu Desa Bunga di Dusun Banga-Banga
+          dan Dusun Labumpung.
+        </p>
+        <div class="cadres" id="cadres"></div>
+      </article>
+
+      <!-- Tabel Data Kependudukan & KB Desa Bunga -->
+      <article class="card village-data-card">
+        <div class="poktan-summary-head">
+          <h3>Tabel Data Desa Bunga</h3>
+          <span class="org-chart-badge tone-green">Kependudukan &amp; Mix Kontrasepsi</span>
+        </div>
+        <div class="village-tabs" id="village-tabs" role="tablist" aria-label="Pilih dusun"></div>
+        <div class="village-stats" id="village-stats"></div>
+        <div class="village-table-wrap">
+          <table class="village-table" id="village-table">
+            <thead>
+              <tr>
+                <th rowspan="2">Dusun</th>
+                <th colspan="2">Jumlah KK</th>
+                <th colspan="2">Jumlah Jiwa</th>
+                <th rowspan="2">PUS</th>
+                <th rowspan="2">WUS</th>
+                <th colspan="7">Mix Kontrasepsi</th>
+              </tr>
+              <tr>
+                <th>LK</th>
+                <th>PR</th>
+                <th>LK</th>
+                <th>PR</th>
+                <th>PIL</th>
+                <th>STK</th>
+                <th>IMP</th>
+                <th>IUD</th>
+                <th>MOW</th>
+                <th>MOP</th>
+                <th>KDM</th>
+              </tr>
+            </thead>
+            <tbody id="village-table-body"></tbody>
+          </table>
+        </div>
+      </article>
+    </section>
+
+    <!-- Jenis Pelayanan Section (5 Langkah Posyandu) -->
+    <section id="layanan" class="section services-section reveal">
+      <div class="section-heading text-center">
+        <span class="eyebrow">Pelayanan Rutin</span>
+        <h2>Alur 5 Langkah Pelayanan Terpadu</h2>
+      </div>
+      <div class="service-tabs" role="tablist" aria-label="Jenis pelayanan posyandu">
+        <button class="tab active" type="button" data-tab="pendaftaran">Pendaftaran</button>
+        <button class="tab" type="button" data-tab="penimbangan">Penimbangan</button>
+        <button class="tab" type="button" data-tab="pencatatan">Pencatatan</button>
+        <button class="tab" type="button" data-tab="penyuluhan">Penyuluhan</button>
+        <button class="tab" type="button" data-tab="imunisasi">Imunisasi &amp; Vitamin</button>
+      </div>
+      <div class="service-panel-card" id="service-panel"></div>
+    </section>
+
+    <!-- Jadwal Posyandu Section -->
+    <section id="jadwal" class="section schedule-section reveal">
+      <!-- Banner kecil di atas halaman Jadwal -->
+      <div class="banner banner-info">
+        <span class="banner-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 11v2a2 2 0 0 0 2 2h2l3 4V5L7 9H5a2 2 0 0 0-2 2z" />
+            <path d="M15 9a3 3 0 0 1 0 6" />
+            <path d="M17.5 6.5a7 7 0 0 1 0 11" />
+          </svg>
+        </span>
+        <span class="banner-text"><strong>Informasi:</strong> Jadwal Posyandu dapat berubah sewaktu-waktu. Silakan
+          selalu cek Google Calendar sebelum datang.</span>
+      </div>
+
+      <div class="section-heading text-center">
+        <span class="eyebrow">
+          <span class="eyebrow-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+              <path d="M16 2v4M8 2v4M3 10h18" />
+            </svg>
+          </span>
+          Agenda Kegiatan
+        </span>
+        <h2>Jadwal Pelaksanaan Posyandu</h2>
+        <p class="heading-subtext">
+          Jadwal Posyandu diperbarui secara otomatis oleh Bidan/Kader melalui Google Calendar.
+        </p>
+      </div>
+
+      <div class="schedule-grid schedule-grid--full">
+        <!-- Google Calendar Embed Card -->
+        <div class="calendar-embed-card">
+          <div class="calendar-header">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round" class="calendar-icon-svg">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+              <line x1="16" y1="2" x2="16" y2="6" />
+              <line x1="8" y1="2" x2="8" y2="6" />
+              <line x1="3" y1="10" x2="21" y2="10" />
+            </svg>
+            <h3>Google Calendar Posyandu</h3>
+          </div>
+          <div class="iframe-container">
+            <iframe id="calendar-iframe" src="" style="border: 0" width="100%" height="600" frameborder="0"
+              scrolling="no"></iframe>
+          </div>
+          <div class="calendar-footer">
+            <a id="calendar-link" class="btn btn-secondary" href="#" target="_blank" rel="noreferrer">
+              Lihat Kalender Lengkap
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Absensi Kader Section -->
+    <section id="absensi" class="section attendance-section reveal">
+      <!-- Banner di halaman Absensi -->
+      <div class="banner banner-warning">
+        <span class="banner-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
+            <path d="M12 9v4" />
+            <path d="M12 17h.01" />
+          </svg>
+        </span>
+        <span class="banner-text"><strong>Pengumuman:</strong> Hanya kader Posyandu yang bertugas yang mengisi
+          absensi.</span>
+      </div>
+
+      <div class="attendance-card">
+        <div class="attendance-icon-wrap">
+          <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+            <polyline points="14 2 14 8 20 8" />
+            <line x1="16" y1="13" x2="8" y2="13" />
+            <line x1="16" y1="17" x2="8" y2="17" />
+            <polyline points="10 9 9 9 8 9" />
+          </svg>
+        </div>
+        <h2>Absensi Kader Posyandu</h2>
+        <p class="attendance-desc">
+          Gunakan menu ini untuk mencatat kehadiran kader yang bertugas secara langsung pada hari pelaksanaan pelayanan
+          posyandu.
+        </p>
+
+        <a id="attendance-form-btn" class="btn btn-primary btn-lg" href="#" target="_blank" rel="noreferrer">
+          Isi Absensi
+        </a>
+
+        <ul class="attendance-info-list">
+          <li>
+            <span class="check-icon-wrap" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+            </span>
+            <span>Tidak memerlukan login</span>
+          </li>
+          <li>
+            <span class="check-icon-wrap" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+            </span>
+            <span>Absensi hanya membutuhkan waktu kurang dari 1 menit</span>
+          </li>
+          <li>
+            <span class="check-icon-wrap" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+            </span>
+            <span>Data akan langsung diterima oleh admin Posyandu</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Literasi Kesehatan Section -->
+    <section class="section education-section reveal">
+      <div class="section-heading">
+        <span class="eyebrow">
+          <span class="eyebrow-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2a7 7 0 0 0-4 12v2h8v-2a7 7 0 0 0-4-12z" />
+              <path d="M9 20h6" />
+            </svg>
+          </span>
+          Literasi Kesehatan
+        </span>
+        <h2>Informasi Edukasi &amp; Tumbuh Kembang</h2>
+      </div>
+      <div class="grid three-col" id="education-grid"></div>
+    </section>
+
+    <!-- Dokumen & Publikasi Section -->
+    <section id="dokumen" class="section documents-section reveal">
+      <div class="section-heading text-center">
+        <span class="eyebrow">
+          <span class="eyebrow-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+              <path d="M14 2v6h6" />
+            </svg>
+          </span>
+          Dokumen Publik
+        </span>
+        <h2>SOP, Panduan Nutrisi &amp; Unduhan Buku Saku</h2>
+      </div>
+      <div class="grid three-col" id="documents"></div>
+    </section>
+
+    <!-- Edukasi Stunting, Imunisasi, Kalkulator Umur, Status Gizi & FAQ -->
+    <section id="edukasi" class="section tools-section reveal">
+      <div class="section-heading text-center">
+        <span class="eyebrow">
+          <span class="eyebrow-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2a7 7 0 0 0-4 12v2h8v-2a7 7 0 0 0-4-12z" />
+              <path d="M10 20h4" />
+            </svg>
+          </span>
+          Edukasi Interaktif
+        </span>
+        <h2>Video Edukasi, Kalkulator Umur, dan Cek Status Gizi</h2>
+        <p class="heading-subtext">
+          Fitur ini bersifat edukatif untuk membantu pemantauan awal tumbuh kembang balita. Untuk keputusan medis,
+          tetap konsultasikan ke bidan atau petugas kesehatan.
+        </p>
+      </div>
+
+      <div class="tools-layout">
+        <article class="tool-card tool-video-card">
+          <div class="tool-card-head">
+            <span class="tool-chip">Video Edukasi</span>
+            <h3>Stunting dan Imunisasi Balita</h3>
+          </div>
+          <div class="video-grid">
+            <div class="video-item">
+              <div class="video-embed">
+                <iframe id="video-kegiatan-1" title="Video dokumentasi kegiatan Posyandu"
+                  src="https://www.youtube.com/embed/zqpinGFvivg" allowfullscreen
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  referrerpolicy="strict-origin-when-cross-origin"></iframe>
+              </div>
+              <p>Video ILM Edukasi Stunting.</p>
+            </div>
+
+            <div class="video-item">
+              <div class="video-embed">
+                <iframe id="video-kegiatan-2" title="Video dokumentasi kegiatan Posyandu"
+                  src="https://www.youtube.com/embed/RH9zOxSGoHg" allowfullscreen
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  referrerpolicy="strict-origin-when-cross-origin"></iframe>
+              </div>
+              <p>Video Informasi & Edukasi Pencegahan Stunting</p>
+            </div>
+
+            <div class="video-item">
+              <div class="video-embed">
+                <iframe id="video-kegiatan-3" title="Video dokumentasi kegiatan Posyandu"
+                  src="https://www.youtube.com/embed/Ai2CTgLvdcs?si=4Vd1Ogj52TJhShfm" allowfullscreen
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  referrerpolicy="strict-origin-when-cross-origin"></iframe>
+              </div>
+              <p>Pencegahan Terhadap Stunting</p>
+            </div>
+
+            <div class="video-item">
+              <div class="video-embed">
+                <iframe id="video-kegiatan-4" title="Video dokumentasi kegiatan Posyandu"
+                  src="https://www.youtube.com/embed/96-jV1-pd98?si=u4TCE8SnLB1C-5-Y" allowfullscreen
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  referrerpolicy="strict-origin-when-cross-origin"></iframe>
+              </div>
+              <p>Kisah Para Pejuang Kesehatan dalam Pencegahan dan Pengendalian Stunting</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="tool-card tool-calculator-card">
+          <div class="tool-card-head">
+            <span class="tool-chip tool-chip-green">Kalkulator Balita</span>
+            <h3>Kalkulator Umur dan Status Gizi</h3>
+          </div>
+          <form id="nutrition-form" class="nutrition-form">
+            <div class="form-grid">
+              <label>
+                <span>Nama balita (opsional)</span>
+                <input type="text" id="child-name" placeholder="Contoh: Aisyah" autocomplete="name" />
+              </label>
+              <label>
+                <span>Jenis kelamin</span>
+                <select id="child-gender" required>
+                  <option value="">Pilih</option>
+                  <option value="perempuan">Perempuan</option>
+                  <option value="laki-laki">Laki-laki</option>
+                </select>
+              </label>
+              <label>
+                <span>Tanggal lahir</span>
+                <input type="date" id="child-birthdate" />
+              </label>
+              <label>
+                <span>Atau umur (bulan)</span>
+                <input type="number" id="child-age-months" min="0" max="60" step="1" placeholder="18" />
+              </label>
+              <label>
+                <span>Berat badan (kg)</span>
+                <input type="number" id="child-weight" min="0" max="40" step="0.1" placeholder="10.5" required />
+              </label>
+              <label>
+                <span>Tinggi / panjang badan (cm)</span>
+                <input type="number" id="child-height" min="0" max="140" step="0.1" placeholder="80" required />
+              </label>
+            </div>
+            <div class="form-actions">
+              <button class="btn btn-primary" type="submit">Hitung Hasil</button>
+              <button class="btn btn-secondary" type="button" id="nutrition-reset">Reset</button>
+            </div>
+          </form>
+
+          <div class="nutrition-result" id="nutrition-result" aria-live="polite">
+            <p class="nutrition-result-empty">Masukkan data balita untuk melihat hasil pemeriksaan edukatif.</p>
+          </div>
+        </article>
+      </div>
+
+      <article class="faq-card">
+        <div class="tool-card-head">
+          <span class="tool-chip tool-chip-blue">FAQ Interaktif</span>
+          <h3>Pertanyaan yang Sering Diajukan</h3>
+        </div>
+        <div class="faq-list">
+          <details class="faq-item" open>
+            <summary>Apa itu stunting?</summary>
+            <p>Stunting adalah kondisi gagal tumbuh pada anak akibat kekurangan gizi kronis, infeksi berulang, dan
+              faktor lingkungan. Pencegahan terbaik dimulai sejak kehamilan hingga usia 2 tahun.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Kapan balita sebaiknya dibawa ke posyandu?</summary>
+            <p>Balita sebaiknya datang sesuai jadwal bulanan agar berat badan, tinggi badan, dan status kesehatan dapat
+              dipantau secara rutin.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Apakah hasil kalkulator ini menggantikan dokter atau bidan?</summary>
+            <p>Tidak. Hasil ini hanya untuk edukasi dan pemantauan awal. Jika hasil menunjukkan perlu pemantauan,
+              lakukan konsultasi langsung ke tenaga kesehatan.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Data apa saja yang paling membantu saat cek status gizi?</summary>
+            <p>Nama balita, jenis kelamin, umur atau tanggal lahir, berat badan, serta tinggi/panjang badan akan membuat
+              hasil pemantauan lebih jelas.</p>
+          </details>
+        </div>
+      </article>
+    </section>
+
+    <!-- Galeri Kegiatan Section -->
+    <section id="galeri" class="section gallery-section reveal">
+      <div class="section-heading text-center">
+        <span class="eyebrow">
+          <span class="eyebrow-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="5" width="18" height="14" rx="2" />
+              <circle cx="12" cy="12" r="3" />
+            </svg>
+          </span>
+          Galeri Kegiatan
+        </span>
+        <h2>Dokumentasi Kegiatan Posyandu</h2>
+        <p class="heading-subtext">
+          Momen pelayanan, penyuluhan, dan kebersamaan kader dalam menjaga kesehatan ibu dan balita di Posyandu Cut
+          Mutia (Dusun Banga-Banga) dan Posyandu Emisaelan (Dusun Labumpung).
+        </p>
+      </div>
+
+      <div class="gallery-filters" id="gallery-filters" role="tablist" aria-label="Filter kategori galeri"></div>
+
+      <div class="gallery-grid" id="gallery-grid"></div>
+
+      <p class="gallery-empty" id="gallery-empty" hidden>Belum ada foto untuk kategori ini.</p>
+    </section>
+
+    <!-- Lightbox Galeri -->
+    <div class="lightbox" id="gallery-lightbox" aria-hidden="true">
+      <div class="lightbox-backdrop" data-lightbox-close></div>
+      <div class="lightbox-content" role="dialog" aria-modal="true" aria-label="Pratinjau foto kegiatan">
+        <button type="button" class="lightbox-btn lightbox-close" data-lightbox-close aria-label="Tutup">✕</button>
+        <button type="button" class="lightbox-btn lightbox-prev" id="lightbox-prev"
+          aria-label="Foto sebelumnya">‹</button>
+        <button type="button" class="lightbox-btn lightbox-next" id="lightbox-next"
+          aria-label="Foto berikutnya">›</button>
+        <div class="lightbox-media">
+          <img id="lightbox-img" src="" alt="" />
+        </div>
+        <div class="lightbox-caption">
+          <span class="lightbox-tag" id="lightbox-tag"></span>
+          <h4 id="lightbox-title"></h4>
+          <p id="lightbox-date"></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Peta Lokasi Section -->
+    <section class="section map-section reveal">
+      <div class="section-heading">
+        <span class="eyebrow">
+          <span class="eyebrow-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 21s6-5.2 6-11a6 6 0 0 0-12 0c0 5.8 6 11 6 11z" />
+              <circle cx="12" cy="10" r="2.2" />
+            </svg>
+          </span>
+          Peta Lokasi Layanan
+        </span>
+        <h2>Kunjungi Kami di Desa Bunga</h2>
+      </div>
+      <div class="map-wrap">
+        <iframe class="map-visual map-embed" title="Google Maps Posyandu Cut Mutia, Dusun Banga-Banga"
+          src="https://www.google.com/maps?q=-3.8143872,119.6024137&z=17&output=embed" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <div class="map-info">
+          <h3>Alamat &amp; Akses Jalan</h3>
+          <p id="location-text"></p>
+          <p class="map-note">
+            Peta di atas menunjukkan titik lokasi Posyandu Cut Mutia (Dusun Banga-Banga). Posyandu Emisaelan
+            melayani warga di Dusun Labumpung, Desa Bunga.
+          </p>
+          <a id="maps-link" class="btn btn-primary" href="#" target="_blank" rel="noreferrer">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round" style="margin-right: 6px;">
+              <path d="M12 2a8 8 0 0 0-8 8c0 5.25 8 12 8 12s8-6.75 8-12a8 8 0 0 0-8-8z" />
+              <circle cx="12" cy="10" r="3" />
+            </svg>
+            Buka di Google Maps
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Kontak Bidan Section -->
+    <section id="kontak" class="section contact-section reveal">
+      <div class="section-heading text-center">
+        <span class="eyebrow">
+          <span class="eyebrow-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path
+                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.8 12.8 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.8 12.8 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+            </svg>
+          </span>
+          Kontak Layanan
+        </span>
+        <h2>Konsultasi &amp; Pelayanan Bidan Desa</h2>
+      </div>
+      <div class="contact-card">
+        <div class="contact-icon-wrap">
+          <svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path
+              d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+          </svg>
+        </div>
+        <div>
+          <span class="contact-label">Nomor WhatsApp Bidan Desa Bunga</span>
+          <a id="contact-phone" class="contact-phone" href="#">-</a>
+        </div>
+        <p>
+          Hubungi Bidan Desa untuk pendaftaran ibu hamil baru, konsultasi keluhan tumbuh kembang balita, rujukan ke
+          Puskesmas, atau informasi pelaksanaan imunisasi bulanan.
+        </p>
+        <div class="contact-actions">
+          <a href="https://wa.me/6281242223272" target="_blank" rel="noreferrer" class="btn btn-primary btn-wa">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" style="margin-right: 6px;">
+              <path
+                d="M17.472 14.382c-.022-.074-.51-.179-1.01-.3-1.24-.3-1.84-.71-2.02-.9-.1-.1-.3-.42-.04-.84.28-.46.77-.92.95-1.12.18-.2.27-.37.15-.6-.12-.22-.85-2.07-1.16-2.83-.3-.74-.6-.64-.85-.66-.21-.01-.45-.02-.69-.02-.24 0-.63.09-.96.45-.33.36-1.25 1.22-1.25 2.98 0 1.76 1.28 3.47 1.46 3.71.18.24 2.52 3.85 6.1 5.39.85.37 1.52.59 2.04.75.86.27 1.64.23 2.25.14.69-.1 2.13-.87 2.43-1.72.3-.85.3-1.58.21-1.72-.09-.15-.33-.23-.74-.45zM12.03 21.62a9.57 9.57 0 0 1-4.87-1.33l-.35-.2-3.61.95.97-3.52-.22-.35a9.57 9.57 0 0 1-1.47-5.01c0-5.28 4.3-9.58 9.58-9.58 5.28 0 9.58 4.3 9.58 9.58s-4.3 9.58-9.58 9.58zM12.03 0C5.39 0 0 5.39 0 12.03c0 2.12.55 4.18 1.61 6l-1.71 6.24 6.38-1.68c1.76.96 3.73 1.47 5.75 1.47 6.64 0 12.03-5.39 12.03-12.03C24.06 5.39 18.67 0 12.03 0z" />
+            </svg>
+            Hubungi via WhatsApp
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer matching Maatri Chhaya elements -->
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div class="footer-brand-col">
+        <div class="footer-logo">
+          <span class="logo-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 3c2.2 0 4 1.8 4 4 0 3-4 6-4 6s-4-3-4-6c0-2.2 1.8-4 4-4z" />
+              <path d="M12 13v8" />
+              <path d="M8 17h8" />
+            </svg>
+          </span>
+          <strong>Posyandu Desa Bunga</strong>
+        </div>
+        <p>
+          Sistem informasi digital untuk Posyandu Cut Mutia (Dusun Banga-Banga) dan Posyandu Emisaelan (Dusun
+          Labumpung), informatif, interaktif, dan mudah dikelola. Dibuat khusus sebagai program kerja KKN mahasiswa
+          demi peningkatan layanan posyandu di Desa Bunga.
+        </p>
+      </div>
+
+      <div class="footer-links-col">
+        <h4>Menu Cepat</h4>
+        <ul>
+          <li><a href="#beranda">Beranda</a></li>
+          <li><a href="#tentang">Tentang Kami</a></li>
+          <li><a href="#sejarah">Sejarah</a></li>
+          <li><a href="#organisasi">Kader &amp; Organisasi</a></li>
+          <li><a href="#layanan">Layanan 5 Langkah</a></li>
+          <li><a href="#jadwal">Jadwal Posyandu</a></li>
+          <li><a href="#absensi">Absensi Kader</a></li>
+          <li><a href="#dokumen">Dokumen Unduhan</a></li>
+          <li><a href="#galeri">Galeri Kegiatan</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-contact-col">
+        <h4>Informasi Layanan</h4>
+        <ul>
+          <li>
+            <span class="contact-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 21s6-5.2 6-11a6 6 0 0 0-12 0c0 5.8 6 11 6 11z" />
+                <circle cx="12" cy="10" r="2.2" />
+              </svg>
+            </span>
+            <span>Desa Bunga</span>
+          </li>
+          <li>
+            <span class="contact-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path
+                  d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.8 12.8 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.8 12.8 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+              </svg>
+            </span>
+            <span>+62 812-4222-3272 (Bidan Desa)</span>
+          </li>
+          <li>
+            <span class="contact-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="5" width="18" height="14" rx="2" />
+                <path d="M3 7l9 6 9-6" />
+              </svg>
+            </span>
+            <span>posyandu@desabunga.id</span>
+          </li>
+          <li>
+            <span class="contact-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="9" />
+                <path d="M12 7v5l3 2" />
+              </svg>
+            </span>
+            <span>Buka Setiap Hari Selasa Minggu Kedua (08:00 - 12:00 WITA)</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2026 Posyandu Desa Bunga. All Rights Reserved.</p>
+      <a href="#beranda" class="back-to-top">
+        <span>Kembali ke atas</span>
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"
+          stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="18 15 12 9 6 15" />
+        </svg>
+      </a>
+    </div>
+  </footer>
+
+  <script src="config.js"></script>
+  <script src="gallery.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>
