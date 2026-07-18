@@ -11,14 +11,14 @@ const GALLERY_CATEGORIES = [
 
 const GALLERY_ITEMS = [
     {
-        src: "images/kegiatan-1.jpg",
+        src: "images/penimbangan01.webp",
         category: "penimbangan",
         date: "5 Juli 2026",
         title: "Penimbangan Rutin Balita",
         desc: "Pemantauan berat dan tinggi badan balita setiap bulan untuk mendeteksi risiko stunting sejak dini.",
     },
     {
-        src: "images/kegiatan-2.jpg",
+        src: "images/imunisasi01.webp",
         category: "imunisasi",
         date: "18 Juni 2026",
         title: "Imunisasi Dasar Lengkap",
@@ -60,7 +60,7 @@ const GALLERY_ITEMS = [
         desc: "Kegiatan diskusi dan berbagi pengalaman antar ibu mengenai pola asuh dan tumbuh kembang anak.",
     },
     {
-        src: "images/kegiatan-8.jpg",
+        src: "images/kegiatan01.webp",
         category: "kegiatan-lain",
         date: "23 Maret 2026",
         title: "Peringatan Hari Anak",

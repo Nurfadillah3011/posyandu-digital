@@ -33,12 +33,5 @@ const CONFIG = {
   YOUTUBE_STUNTING_EMBED_URL: "https://www.youtube-nocookie.com/embed?listType=search&list=edukasi%20stunting%20balita",
   YOUTUBE_IMUNISASI_EMBED_URL: "https://www.youtube-nocookie.com/embed?listType=search&list=edukasi%20imunisasi%20balita",
 
-  // ─── Data Manual (Fallback terakhir jika semua metode gagal) ─────────────────
-  // Perbarui ini jika tidak ingin menggunakan API key sama sekali
-  UPCOMING_EVENT: {
-    date: "Selasa, 14 Juli 2026",
-    time: "08:00 - 12:00 WITA",
-    location: "Posyandu Dusun Banga-Banga, Desa Bunga (Koordinat: -3.8143872, 119.6024137)",
-    service: "Pemeriksaan Balita, Imunisasi Dasar, dan Distribusi Makanan Tambahan (PMT)"
-  }
+
 };

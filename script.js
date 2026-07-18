@@ -36,7 +36,7 @@ const data = {
       {
         key: "bkbcinta",
         label: "BKB Cinta",
-        icon: "🌱",
+        icon: `<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>`,
         title: "Struktur Kelompok BKB Cinta",
         dusun: "Desa Bunga",
         tone: "green",
@@ -81,7 +81,7 @@ const data = {
       {
         key: "bkrkasih",
         label: "BKR Kasih",
-        icon: "🌸",
+        icon: `<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>`,
         title: "Struktur Kelompok BKR Kasih",
         dusun: "Desa Bunga",
         tone: "blue",
@@ -122,7 +122,7 @@ const data = {
       {
         key: "bklsipatuo",
         label: "BKL Sipatuo",
-        icon: "🌿",
+        icon: `<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>`,
         title: "Struktur Kelompok BKL Sipatuo",
         dusun: "Desa Bunga",
         tone: "yellow",
@@ -159,7 +159,7 @@ const data = {
       {
         key: "ppkbd",
         label: "PPKBD",
-        icon: "🏛️",
+        icon: `<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01"/><path d="M16 6h.01"/><path d="M12 6h.01"/><path d="M12 10h.01"/><path d="M12 14h.01"/><path d="M16 10h.01"/><path d="M16 14h.01"/><path d="M8 10h.01"/><path d="M8 14h.01"/></svg>`,
         title: "Struktur Organisasi PPKBD Desa Bunga",
         dusun: "Desa Bunga",
         tone: "red",
@@ -177,6 +177,49 @@ const data = {
           { name: "Asrianti", role: "PPKBD" },
           { name: "Hasni", role: "Sub PPKBD" },
           { name: "Muliana", role: "Sub PPKBD" },
+        ],
+      },
+      {
+        key: "emisaelan",
+        label: "Posyandu Emisaelan",
+        icon: `<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>`,
+        title: "Struktur Posyandu Emisaelan",
+        dusun: "Dusun Labumpung",
+        tone: "blue",
+        advisors: [
+          { role: "Pembina", names: ["Hadiyah"] },
+        ],
+        tree: {
+          role: "Ketua",
+          name: "Hasni, A.Md., Keb",
+          tier: "ketua",
+          children: [
+            { role: "Sekertaris", name: "Rasma Saidijaya", tier: "exec" },
+            { role: "Bendahara", name: "Nuraisyah", tier: "exec" },
+            {
+              role: "Kader",
+              name: "Pelayanan 5 Langkah",
+              tier: "staff",
+              children: [
+                { role: "Pendaftaran", name: "Rahmani", tier: "leaf" },
+                { role: "Penimbangan", name: "Hasmi", tier: "leaf" },
+                { role: "Pencatatan", name: "Farwah", tier: "leaf" },
+                { role: "Penyuluhan", name: "Sumarwah", tier: "leaf" },
+                { role: "Kesehatan", name: "Juhaeni", tier: "leaf" },
+              ],
+            },
+          ],
+        },
+        members: [
+          { name: "Hadiyah", role: "Pembina" },
+          { name: "Hasni, A.Md., Keb", role: "Ketua" },
+          { name: "Rasma Saidijaya", role: "Sekertaris" },
+          { name: "Nuraisyah", role: "Bendahara" },
+          { name: "Rahmani", role: "Kader Pendaftaran" },
+          { name: "Hasmi", role: "Kader Penimbangan" },
+          { name: "Farwah", role: "Kader Pencatatan" },
+          { name: "Sumarwah", role: "Kader Penyuluhan" },
+          { name: "Juhaeni", role: "Kader Kesehatan" },
         ],
       },
     ],
@@ -286,20 +329,6 @@ const data = {
       url: "perilaku-hidup-bersih-sehat.html"
     }
   ],
-  documents: [
-    {
-      title: "SOP Pelayanan Posyandu",
-      text: "Dokumen panduan standar operasional pelaksanaan posyandu 5 langkah di Dusun Banga-Banga untuk kader dan petugas kesehatan."
-    },
-    {
-      title: "Buku Saku Pencegahan Stunting",
-      text: "Buku panduan praktis bagi orang tua berisi daftar menu MPASI lokal kaya protein hewani dan jadwal tumbuh kembang balita."
-    },
-    {
-      title: "Poster Imunisasi Dasar Lengkap",
-      text: "Poster edukasi berisi jadwal, jenis, dan manfaat imunisasi wajib untuk kekebalan tubuh bayi usia 0-11 bulan."
-    }
-  ],
   location: {
     text: "Posyandu Cut Mutia, Dusun Banga-Banga, Desa Bunga. Koordinat lokasi: -3.8143872, 119.6024137.",
     mapsUrl: "https://www.google.com/maps?q=-3.8143872,119.6024137"
@@ -311,7 +340,6 @@ const timeline = document.getElementById("timeline");
 const cadres = document.getElementById("cadres");
 const servicePanel = document.getElementById("service-panel");
 const educationGrid = document.getElementById("education-grid");
-const documentsGrid = document.getElementById("documents");
 const locationText = document.getElementById("location-text");
 const mapsLink = document.getElementById("maps-link");
 const contactPhone = document.getElementById("contact-phone");
@@ -662,26 +690,6 @@ function renderEducation() {
           <h3>${item.title}</h3>
           <p>${item.text}</p>
           <a href="${item.url}" class="card-link">Pelajari ➜</a>
-        </article>
-      `
-    )
-    .join("");
-}
-
-function renderDocuments() {
-  documentsGrid.innerHTML = data.documents
-    .map(
-      (item) => `
-        <article class="document-item card card-blue-soft">
-          <div class="card-icon-wrap">
-            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-          </div>
-          <h3>${item.title}</h3>
-          <p>${item.text}</p>
-          <button class="btn btn-secondary btn-sm" onclick="alert('Mengunduh ${item.title}...')">
-            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 6px;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-            Unduh Dokumen
-          </button>
         </article>
       `
     )
@@ -1122,7 +1130,43 @@ function renderGoogleFeatures() {
   if (typeof CONFIG !== 'undefined') {
     // Set Calendar Embed
     const calendarIframe = document.getElementById("calendar-iframe");
-    if (calendarIframe) calendarIframe.src = CONFIG.GOOGLE_CALENDAR_URL;
+    if (calendarIframe) {
+      const applyResponsiveCalendarView = () => {
+        try {
+          const url = new URL(CONFIG.GOOGLE_CALENDAR_URL);
+          const isMobile = window.matchMedia("(max-width: 768px)").matches;
+
+          // Sembunyikan kontrol tambahan agar area konten kalender lebih lega.
+          url.searchParams.set("showTitle", "0");
+          url.searchParams.set("showPrint", "0");
+          url.searchParams.set("showTabs", "0");
+          url.searchParams.set("showCalendars", "0");
+          url.searchParams.set("showTz", "0");
+
+          if (isMobile) {
+            url.searchParams.set("mode", "AGENDA");
+          } else {
+            url.searchParams.set("mode", "MONTH");
+          }
+
+          const nextSrc = url.toString();
+          if (calendarIframe.src !== nextSrc) {
+            calendarIframe.src = nextSrc;
+          }
+        } catch (_) {
+          calendarIframe.src = CONFIG.GOOGLE_CALENDAR_URL;
+        }
+      };
+
+      applyResponsiveCalendarView();
+
+      const viewportQuery = window.matchMedia("(max-width: 768px)");
+      if (typeof viewportQuery.addEventListener === "function") {
+        viewportQuery.addEventListener("change", applyResponsiveCalendarView);
+      } else if (typeof viewportQuery.addListener === "function") {
+        viewportQuery.addListener(applyResponsiveCalendarView);
+      }
+    }
 
     // Set Calendar External Link
     const calendarLink = document.getElementById("calendar-link");
@@ -1146,7 +1190,6 @@ renderVillageStats();
 renderVillageTable();
 renderService("pendaftaran");
 renderEducation();
-renderDocuments();
 renderLocation();
 renderEducationalVideos();
 renderGoogleFeatures();
@@ -1222,3 +1265,53 @@ const observer = new IntersectionObserver(
 );
 
 revealItems.forEach((item) => observer.observe(item));
+
+// ─── Auto-swipe untuk card responsif (mobile) ──────────────────────────────
+function setupAutoSwipe() {
+  const swipeContainers = document.querySelectorAll('.two-col, .three-col, .four-col, .gallery-grid, .stats-row, .cadres, .video-grid');
+
+  swipeContainers.forEach((container) => {
+    let autoScrollInterval;
+    let isHovered = false;
+
+    const startAutoScroll = () => {
+      clearInterval(autoScrollInterval);
+      autoScrollInterval = setInterval(() => {
+        // Hanya jalan jika elemen bisa discroll (overflow aktif di mobile)
+        if (container.scrollWidth <= container.clientWidth || isHovered) return;
+
+        const firstChild = container.firstElementChild;
+        if (!firstChild) return;
+
+        const maxScrollLeft = container.scrollWidth - container.clientWidth;
+
+        if (container.scrollLeft >= maxScrollLeft - 10) {
+          // Jika di ujung, kembali ke awal
+          container.scrollTo({ left: 0, behavior: 'smooth' });
+        } else {
+          // Geser ke item berikutnya
+          const scrollAmount = firstChild.clientWidth + parseInt(window.getComputedStyle(container).gap || 16);
+          container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+        }
+      }, 10000); // 10 detik
+    };
+
+    const stopAutoScroll = () => {
+      clearInterval(autoScrollInterval);
+    };
+
+    // Hentikan saat pengguna berinteraksi (hover/touch)
+    container.addEventListener('mouseenter', () => isHovered = true);
+    container.addEventListener('mouseleave', () => {
+      isHovered = false;
+      startAutoScroll(); // restart timer
+    });
+    container.addEventListener('touchstart', stopAutoScroll, { passive: true });
+    container.addEventListener('touchend', startAutoScroll, { passive: true });
+
+    startAutoScroll();
+  });
+}
+
+// Beri sedikit jeda agar DOM & layout selesai dirender secara komplit
+setTimeout(setupAutoSwipe, 500);
