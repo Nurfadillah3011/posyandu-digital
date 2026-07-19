@@ -2249,6 +2249,11 @@ main {
     max-width: 400px;
   }
 
+  /* Hero image tampil di atas teks saat tablet/mobile */
+  .hero-image-wrap {
+    order: -1;
+  }
+
   .floating-card-1 {
     left: -5%;
   }
@@ -3495,7 +3500,8 @@ main {
 
 /* ─── Swipe Horizontal Otomatis untuk Card di Mode Mobile ────────────────────
    Berlaku untuk: Galeri Dokumentasi (.gallery-grid), Video Edukasi (.video-grid),
-   Daftar Kader (.cadres), dan Statistik (.stats-row).
+   Daftar Kader (.cadres), Statistik (.stats-row), Pillar Cards (.pillars-section .grid),
+   dan Education Cards (#education-grid).
    Diletakkan di akhir file agar urutan cascade menang atas aturan grid 1 kolom
    sebelumnya, dan disinkronkan dengan setupAutoSwipe() di script.js. ────────── */
 @media (max-width: 768px) {
@@ -3503,7 +3509,9 @@ main {
   .gallery-grid,
   .video-grid,
   .stats-row,
-  .cadres {
+  .cadres,
+  .pillars-section .grid,
+  #education-grid {
     display: flex;
     grid-template-columns: none;
     flex-wrap: nowrap;
@@ -3521,7 +3529,9 @@ main {
   .gallery-grid::-webkit-scrollbar,
   .video-grid::-webkit-scrollbar,
   .stats-row::-webkit-scrollbar,
-  .cadres::-webkit-scrollbar {
+  .cadres::-webkit-scrollbar,
+  .pillars-section .grid::-webkit-scrollbar,
+  #education-grid::-webkit-scrollbar {
     display: none;
     height: 0;
   }
@@ -3548,5 +3558,19 @@ main {
 
   .cadre-name-list {
     max-height: 13rem;
+  }
+
+  /* Pillar cards: lebar 82% agar sedikit mengintip, mendorong swipe */
+  .pillars-section .grid>.pillar-card {
+    flex: 0 0 82%;
+    max-width: 82%;
+    scroll-snap-align: center;
+  }
+
+  /* Education cards: lebar 86% agar sedikit mengintip */
+  #education-grid>.education-item {
+    flex: 0 0 86%;
+    max-width: 86%;
+    scroll-snap-align: center;
   }
 }

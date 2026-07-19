@@ -1268,7 +1268,7 @@ revealItems.forEach((item) => observer.observe(item));
 
 // ─── Auto-swipe untuk card responsif (mobile) ──────────────────────────────
 function setupAutoSwipe() {
-  const swipeContainers = document.querySelectorAll('.two-col, .three-col, .four-col, .gallery-grid, .stats-row, .cadres, .video-grid');
+  const swipeContainers = document.querySelectorAll('.two-col, .three-col, .four-col, .gallery-grid, .stats-row, .cadres, .video-grid, .pillars-section .grid, #education-grid');
 
   swipeContainers.forEach((container) => {
     let autoScrollInterval;
@@ -1293,7 +1293,7 @@ function setupAutoSwipe() {
           const scrollAmount = firstChild.clientWidth + parseInt(window.getComputedStyle(container).gap || 16);
           container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
         }
-      }, 10000); // 10 detik
+      }, 5000); // 5 detik
     };
 
     const stopAutoScroll = () => {
