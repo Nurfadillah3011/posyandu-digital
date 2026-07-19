@@ -2249,7 +2249,6 @@ main {
     max-width: 400px;
   }
 
-  /* Hero image tampil di atas teks saat tablet/mobile */
   .hero-image-wrap {
     order: -1;
   }
