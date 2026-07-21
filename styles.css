@@ -2254,17 +2254,73 @@ main {
   }
 }
 
-/* Animations & Transitions for revealing */
+/* Animations & Transitions for revealing (scroll reveal) */
+/* Berlaku sama di mode desktop maupun mobile — dipicu oleh posisi elemen
+   terhadap viewport (IntersectionObserver), bukan oleh ukuran layar. */
 .reveal {
   opacity: 0;
   transform: translateY(24px);
-  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: var(--reveal-delay, 0ms);
   will-change: transform, opacity;
 }
 
 .reveal.is-visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* Varian arah untuk elemen yang ingin masuk dari samping */
+.reveal-left {
+  transform: translateX(-28px);
+}
+
+.reveal-left.is-visible {
+  transform: translateX(0);
+}
+
+.reveal-right {
+  transform: translateX(28px);
+}
+
+.reveal-right.is-visible {
+  transform: translateX(0);
+}
+
+.reveal-scale {
+  transform: scale(0.94);
+}
+
+.reveal-scale.is-visible {
+  transform: scale(1);
+}
+
+/* Mobile: jarak transform sedikit dipersempit & durasi sedikit lebih cepat
+   agar terasa ringan/tidak lambat di layar kecil, transisi tetap aktif. */
+@media (max-width: 640px) {
+
+  .reveal,
+  .reveal-left,
+  .reveal-right {
+    transform: translateY(16px);
+    transition-duration: 0.55s;
+  }
+
+  .reveal-scale {
+    transform: scale(0.96);
+  }
+}
+
+/* Hormati preferensi pengguna yang meminta gerakan minim */
+@media (prefers-reduced-motion: reduce) {
+
+  .reveal,
+  .reveal-left,
+  .reveal-right,
+  .reveal-scale {
+    transition: opacity 0.3s ease;
+    transform: none !important;
+  }
 }
 
 /* Responsiveness Settings */

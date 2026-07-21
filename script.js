@@ -1251,20 +1251,8 @@ if (navDropdown) {
   });
 }
 
-const revealItems = document.querySelectorAll(".reveal");
-const observer = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("is-visible");
-        observer.unobserve(entry.target);
-      }
-    });
-  },
-  { threshold: 0.1 }
-);
-
-revealItems.forEach((item) => observer.observe(item));
+// Catatan: animasi transisi saat scroll (.reveal) kini ditangani oleh
+// scroll-reveal.js, yang dimuat sebelum file ini di setiap halaman.
 
 // ─── Auto-swipe untuk card responsif (mobile) ──────────────────────────────
 function setupAutoSwipe() {
