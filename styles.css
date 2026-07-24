@@ -319,14 +319,77 @@ a {
 
 .nav-toggle {
   display: none;
-  background: none;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  min-height: 2.75rem;
+  padding: 0.55rem 0.75rem 0.55rem 0.9rem;
+  background: var(--bg-surface);
   border: 1px solid var(--border-color);
-  padding: 0.5rem 1rem;
   border-radius: 999px;
   font-family: inherit;
-  font-weight: 600;
+  font-size: 0.82rem;
+  font-weight: 700;
   cursor: pointer;
   color: var(--text-dark);
+  box-shadow: var(--shadow-sm);
+  transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
+}
+
+.nav-toggle:hover {
+  border-color: var(--accent-green);
+  box-shadow: var(--shadow-md);
+}
+
+.nav-toggle:focus-visible {
+  outline: 3px solid rgba(45, 106, 79, 0.25);
+  outline-offset: 3px;
+}
+
+.nav-toggle-icon {
+  display: grid;
+  gap: 0.22rem;
+  width: 1.1rem;
+}
+
+.nav-toggle-icon span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  border-radius: 999px;
+  background: currentColor;
+  transform-origin: center;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.nav-toggle[aria-expanded="true"] {
+  background: var(--accent-green);
+  border-color: var(--accent-green);
+  color: #fff;
+}
+
+.nav-toggle[aria-expanded="true"] .nav-toggle-icon span:nth-child(1) {
+  transform: translateY(0.44rem) rotate(45deg);
+}
+
+.nav-toggle[aria-expanded="true"] .nav-toggle-icon span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-toggle[aria-expanded="true"] .nav-toggle-icon span:nth-child(3) {
+  transform: translateY(-0.44rem) rotate(-45deg);
+}
+
+@keyframes navMenuIn {
+  from {
+    opacity: 0;
+    transform: translateY(-0.5rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Buttons */
@@ -2249,7 +2312,7 @@ main {
   }
 
   .nav-toggle {
-    display: block;
+    display: inline-flex;
   }
 
   .site-nav {
@@ -2263,6 +2326,13 @@ main {
 
   .site-nav.is-open {
     display: flex;
+    margin-top: 0.85rem;
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    background: rgba(255, 255, 255, 0.82);
+    box-shadow: var(--shadow-sm);
+    animation: navMenuIn 0.2s ease-out;
   }
 
   .site-nav a {

@@ -78,8 +78,8 @@ const GALLERY_ITEMS = [
         src: "images/penimbangan/penimbangan11.webp",
         category: "penimbangan",
         date: BANGABANGA_DATE,
-        title: "Dokumentasi Penimbangan Balita",
-        desc: "Dokumentasi kegiatan penimbangan dan pemantauan tumbuh kembang balita di posyandu.",
+        title: "Pengukuran Panjang Badan Bayi",
+        desc: "Pengukuran panjang badan bayi sebagai bagian dari pemantauan pertumbuhan di posyandu.",
     },
 
 
@@ -143,29 +143,29 @@ const GALLERY_ITEMS = [
         src: "images/imunisasi/imunisasi09.webp",
         category: "imunisasi",
         date: BANGABANGA_DATE,
-        title: "Pelayanan Imunisasi Balita",
-        desc: "Pelayanan imunisasi bagi bayi dan balita bersama tenaga kesehatan di posyandu.",
+        title: "Pelayanan Kesehatan Bayi",
+        desc: "Tenaga kesehatan memeriksa kondisi bayi sebelum menerima layanan di posyandu.",
     },
     {
         src: "images/imunisasi/imunisasi10.webp",
         category: "imunisasi",
         date: BANGABANGA_DATE,
-        title: "Pencatatan Imunisasi",
-        desc: "Kader mencatat pelayanan imunisasi untuk memastikan jadwal balita tetap terpantau.",
+        title: "Pemberian Imunisasi Bayi",
+        desc: "Tenaga kesehatan memberikan imunisasi kepada bayi dengan pendampingan orang tua dan kader.",
     },
     {
         src: "images/imunisasi/imunisasi12.webp",
         category: "imunisasi",
         date: BANGABANGA_DATE,
-        title: "Kegiatan Imunisasi Rutin",
-        desc: "Pelaksanaan imunisasi rutin sebagai perlindungan kesehatan bayi dan balita.",
+        title: "Pendampingan Imunisasi Bayi",
+        desc: "Kader mendampingi orang tua dan bayi selama proses pelayanan imunisasi di posyandu.",
     },
     {
         src: "images/imunisasi/imunisasi13.webp",
         category: "imunisasi",
         date: BANGABANGA_DATE,
-        title: "Dokumentasi Pelayanan Imunisasi",
-        desc: "Dokumentasi pelayanan imunisasi bersama petugas kesehatan dan kader posyandu.",
+        title: "Imunisasi Balita di Posyandu",
+        desc: "Pemberian imunisasi balita oleh tenaga kesehatan sebagai upaya menjaga kekebalan tubuh.",
     },
 
     {

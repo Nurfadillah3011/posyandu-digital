@@ -1231,6 +1231,7 @@ const siteNav = document.querySelector(".site-nav");
 navToggle.addEventListener("click", () => {
   const isOpen = siteNav.classList.toggle("is-open");
   navToggle.setAttribute("aria-expanded", String(isOpen));
+  navToggle.setAttribute("aria-label", isOpen ? "Tutup navigasi utama" : "Buka navigasi utama");
 });
 
 // Tutup menu mobile setiap kali sebuah link navigasi diklik
@@ -1238,6 +1239,7 @@ siteNav.querySelectorAll("a").forEach((link) => {
   link.addEventListener("click", () => {
     siteNav.classList.remove("is-open");
     navToggle.setAttribute("aria-expanded", "false");
+    navToggle.setAttribute("aria-label", "Buka navigasi utama");
   });
 });
 
