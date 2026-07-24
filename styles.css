@@ -254,7 +254,7 @@ a {
   margin-left: 0.5rem;
 }
 
-/* "Lainnya" dropdown - menampung menu sekunder agar navbar tidak melebar */
+/* "Lainnya" dropdown */
 .nav-dropdown {
   position: relative;
 }
@@ -1005,9 +1005,6 @@ main {
   flex-shrink: 0;
 }
 
-/* Daftar nama: disusun 2 kolom + tinggi dibatasi supaya kartu tidak
-   membengkak saat satu kelompok punya banyak kader. Kelebihan nama
-   bisa digulir di dalam kartunya sendiri (scroll internal). */
 .cadre-name-list {
   list-style: none;
   padding: 0 0.25rem 0 0;
@@ -1030,25 +1027,28 @@ main {
   border-radius: 999px;
 }
 
+/* --- PERBAIKAN PADA NAMA KADER AGAR TAMPIL FULL DI MOBILE --- */
 .cadre-name-item {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.45rem 0.55rem;
+  padding: 0.5rem 0.6rem;
   background: rgba(255, 255, 255, 0.8);
   border: 1px solid rgba(255, 255, 255, 0.8);
   border-radius: 10px;
   font-size: 0.82rem;
   font-weight: 700;
   color: var(--text-dark);
-  line-height: 1.2;
+  line-height: 1.3;
   min-width: 0;
+  word-break: break-word;
 }
 
 .cadre-name-item span {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+  word-break: break-word;
 }
 
 .tone-green .cadre-avatar {
@@ -1081,7 +1081,7 @@ main {
   flex-shrink: 0;
 }
 
-/* ─── Org Chart Tabs & Tree Diagram ───────────────────────────────────── */
+/* Org Chart Tabs & Tree Diagram */
 .org-chart-tabs {
   display: flex;
   justify-content: center;
@@ -1155,7 +1155,7 @@ main {
   overflow-x: auto;
 }
 
-/* Pure-CSS org tree, adapted from the classic nested-list technique */
+/* Tree Diagram */
 .tree,
 .tree ul,
 .tree li {
@@ -1430,7 +1430,7 @@ main {
   flex-shrink: 0;
 }
 
-/* Card Blue/Green Soft Subtypes for Education & Docs */
+/* Card Blue/Green Soft Subtypes */
 .card-green-soft {
   background-color: var(--card-green-bg);
   border: 1px solid rgba(82, 183, 136, 0.12);
@@ -1525,7 +1525,6 @@ main {
   border-radius: var(--radius-lg);
   overflow: hidden;
   background-color: #F1ECE1;
-  /* Custom soft canvas beige */
   border: 1.5px solid var(--border-color);
   box-shadow: var(--shadow-sm);
 }
@@ -1536,146 +1535,6 @@ main {
   min-height: 340px;
   border: 0;
   display: block;
-}
-
-.map-grid {
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(146, 126, 111, 0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(146, 126, 111, 0.06) 1px, transparent 1px);
-  background-size: 32px 32px;
-}
-
-.map-park {
-  position: absolute;
-  top: 10%;
-  left: 5%;
-  width: 45%;
-  height: 38%;
-  background: #DFEAD0;
-  /* Soft pastel green area */
-  border-radius: 40px;
-  opacity: 0.85;
-}
-
-.map-river {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 48px;
-  background: #D8E6F0;
-  /* Soft pastel blue river */
-  opacity: 0.8;
-  border-top: 2px solid #C0D2E1;
-}
-
-.map-road {
-  position: absolute;
-  background: #FFF9EE;
-  /* Warm white road */
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-}
-
-.road-main {
-  width: 100%;
-  height: 28px;
-  top: 55%;
-  left: 0;
-  transform: rotate(-3deg);
-}
-
-.road-sub {
-  width: 24px;
-  height: 60%;
-  top: 10%;
-  left: 60%;
-}
-
-.map-building {
-  position: absolute;
-  background: #FFF;
-  border: 1px solid #D5C9B3;
-  border-radius: var(--radius-sm);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.72rem;
-  font-weight: 700;
-  box-shadow: var(--shadow-sm);
-}
-
-.building-desa {
-  width: 78px;
-  height: 42px;
-  top: 25%;
-  left: 68%;
-  background: var(--card-blue-bg);
-  border-color: var(--card-blue-accent);
-}
-
-.building-posyandu {
-  width: 82px;
-  height: 42px;
-  top: 40%;
-  left: 30%;
-  background: var(--card-pink-bg);
-  border-color: var(--card-pink-accent);
-}
-
-.map-building span {
-  padding: 0 4px;
-  text-align: center;
-}
-
-.map-pin {
-  position: absolute;
-  top: 45%;
-  left: 38%;
-  width: 1rem;
-  height: 1rem;
-  border-radius: 50%;
-  background: var(--accent-red);
-  box-shadow: 0 0 0 6px rgba(162, 35, 35, 0.15);
-  z-index: 5;
-}
-
-.map-pulse {
-  position: absolute;
-  top: 45%;
-  left: 38%;
-  transform: translate(-10%, -10%);
-  width: 1.2rem;
-  height: 1.2rem;
-  border-radius: 50%;
-  border: 2px solid var(--accent-red);
-  animation: pulse 1.8s infinite;
-  pointer-events: none;
-}
-
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-    opacity: 1;
-  }
-
-  100% {
-    transform: scale(2.8);
-    opacity: 0;
-  }
-}
-
-.map-route-line {
-  position: absolute;
-  top: 50%;
-  left: 40%;
-  width: 25%;
-  height: 25px;
-  border-bottom: 3px dashed var(--accent-yellow);
-  border-right: 3px dashed var(--accent-yellow);
-  border-bottom-right-radius: 12px;
-  pointer-events: none;
 }
 
 .map-info {
@@ -1938,7 +1797,6 @@ main {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1.6rem;
-  /* Tampilkan maks 3 baris, selebihnya scroll */
   max-height: calc((((100vw - 4rem) / 3) * 0.75 + 160px) * 3 + 1.6rem * 2);
   overflow-y: auto;
   overflow-x: hidden;
@@ -1946,7 +1804,6 @@ main {
   scroll-behavior: smooth;
 }
 
-/* Custom scrollbar gallery */
 .gallery-grid::-webkit-scrollbar {
   width: 6px;
 }
@@ -1966,7 +1823,6 @@ main {
   background: var(--accent-green-dark, #1b4332);
 }
 
-/* Firefox scrollbar */
 .gallery-grid {
   scrollbar-width: thin;
   scrollbar-color: var(--accent-green, #2d6a4f) var(--bg-muted, #f5f5f5);
@@ -2030,8 +1886,6 @@ main {
   transform: translateY(6px);
   transition: all 0.25s ease;
   pointer-events: none;
-  width: 34px;
-  height: 34px;
 }
 
 .gallery-body {
@@ -2069,7 +1923,6 @@ main {
   margin: 0;
 }
 
-/* Tag colors cycling through brand accents */
 .gallery-tag.tag-red {
   background: var(--card-pink-bg);
   color: var(--accent-red);
@@ -2243,7 +2096,6 @@ main {
 @media (max-width: 720px) {
   .gallery-grid {
     grid-template-columns: 1fr;
-    /* 3 baris × (lebar card full-width × 0.75 + body) + 2 gap */
     max-height: calc(((100vw - 2rem) * 0.75 + 160px) * 3 + 1.6rem * 2);
   }
 
@@ -2254,9 +2106,7 @@ main {
   }
 }
 
-/* Animations & Transitions for revealing (scroll reveal) */
-/* Berlaku sama di mode desktop maupun mobile — dipicu oleh posisi elemen
-   terhadap viewport (IntersectionObserver), bukan oleh ukuran layar. */
+/* Scroll Reveal Animations */
 .reveal {
   opacity: 0;
   transform: translateY(24px);
@@ -2270,7 +2120,6 @@ main {
   transform: translateY(0);
 }
 
-/* Varian arah untuk elemen yang ingin masuk dari samping */
 .reveal-left {
   transform: translateX(-28px);
 }
@@ -2295,8 +2144,6 @@ main {
   transform: scale(1);
 }
 
-/* Mobile: jarak transform sedikit dipersempit & durasi sedikit lebih cepat
-   agar terasa ringan/tidak lambat di layar kecil, transisi tetap aktif. */
 @media (max-width: 640px) {
 
   .reveal,
@@ -2311,7 +2158,6 @@ main {
   }
 }
 
-/* Hormati preferensi pengguna yang meminta gerakan minim */
 @media (prefers-reduced-motion: reduce) {
 
   .reveal,
@@ -2371,7 +2217,6 @@ main {
 
   .gallery-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    /* 3 baris × (lebar card 2-kolom × 0.75 + body) + 2 gap */
     max-height: calc((((100vw - 4rem) / 2) * 0.75 + 160px) * 3 + 1.6rem * 2);
   }
 
@@ -2433,7 +2278,6 @@ main {
     text-align: center;
   }
 
-  /* Dropdown "Lainnya" jadi menyatu di dalam menu mobile, bukan popup */
   .nav-dropdown-menu {
     position: static;
     transform: none;
@@ -2534,10 +2378,6 @@ main {
   }
 }
 
-/* ==================================================
-   NEW FEATURES STYLING (Fitur 1 & 2)
-   ================================================== */
-
 /* Banners */
 .banner {
   display: flex;
@@ -2593,7 +2433,6 @@ main {
   margin-top: 2rem;
 }
 
-/* Mode penuh: hanya tampilkan calendar embed tanpa kolom kanan */
 .schedule-grid--full {
   grid-template-columns: 1fr;
 }
@@ -2732,7 +2571,7 @@ main {
   background-color: var(--card-green-accent);
 }
 
-/* Attendance Section (Absensi Kader) */
+/* Attendance Section */
 .attendance-section {
   background: var(--card-pink-bg);
   border-color: rgba(224, 122, 122, 0.15);
@@ -2811,7 +2650,7 @@ main {
   background: var(--card-green-bg);
 }
 
-/* Tools Section: Video, Calculator, FAQ */
+/* Tools Section */
 .tools-section {
   background: linear-gradient(180deg, #fffdf9 0%, #f7faf8 100%);
 }
@@ -3158,7 +2997,6 @@ main {
   }
 }
 
-/* Responsiveness for New Features */
 @media (max-width: 960px) {
   .schedule-grid {
     grid-template-columns: 1fr;
@@ -3197,287 +3035,7 @@ main {
   }
 }
 
-/* Article pages */
-.article-main {
-  width: min(980px, calc(100% - 2rem));
-  margin: 1.5rem auto 4rem;
-  padding: 0;
-}
-
-.article-main article {
-  background: var(--bg-surface);
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-xl);
-  box-shadow: var(--shadow-sm);
-  padding: clamp(1.2rem, 3vw, 2.5rem);
-}
-
-.breadcrumb {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.45rem;
-  align-items: center;
-  margin-bottom: 1rem;
-  font-size: 0.85rem;
-  color: var(--text-muted);
-}
-
-.crumb-sep {
-  opacity: 0.55;
-}
-
-.crumb-current {
-  color: var(--text-dark);
-  font-weight: 700;
-}
-
-.article-hero {
-  padding-bottom: 1.4rem;
-  margin-bottom: 1.6rem;
-  border-bottom: 1px solid var(--border-color);
-}
-
-.article-hero h1 {
-  font-size: clamp(2rem, 4vw, 3.2rem);
-  line-height: 1.1;
-  margin: 0.9rem 0 1rem;
-}
-
-.article-lead {
-  font-size: 1.03rem;
-  max-width: 72ch;
-}
-
-.article-meta-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.55rem 0.75rem;
-  margin-top: 1rem;
-}
-
-.article-meta-row span {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  background: var(--bg-main);
-  border: 1px solid var(--border-color);
-  border-radius: 999px;
-  padding: 0.35rem 0.75rem;
-  font-size: 0.82rem;
-  font-weight: 700;
-  color: var(--text-muted);
-}
-
-.article-toc {
-  background: var(--bg-main);
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-lg);
-  padding: 1.1rem 1.2rem;
-  margin-bottom: 1.6rem;
-}
-
-.article-toc h2 {
-  font-size: 1.15rem;
-  margin-bottom: 0.8rem;
-}
-
-.article-toc ol {
-  margin: 0;
-  padding-left: 1.2rem;
-  display: grid;
-  gap: 0.45rem;
-}
-
-.article-content {
-  display: grid;
-  gap: 1rem;
-}
-
-.article-content h2,
-.article-content h3 {
-  scroll-margin-top: 6rem;
-}
-
-.article-content h2 {
-  margin-top: 1.5rem;
-  font-size: clamp(1.35rem, 2.5vw, 1.9rem);
-}
-
-.article-content h3 {
-  margin-top: 1rem;
-  font-size: 1.2rem;
-}
-
-.article-content ul,
-.article-content ol {
-  margin: 0;
-  padding-left: 1.2rem;
-  display: grid;
-  gap: 0.5rem;
-}
-
-.article-content p {
-  margin: 0;
-}
-
-.callout-box {
-  display: flex;
-  gap: 0.9rem;
-  align-items: flex-start;
-  padding: 1rem 1.1rem;
-  border-radius: var(--radius-md);
-  border: 1px solid transparent;
-}
-
-.callout-box h4 {
-  margin: 0 0 0.2rem;
-  font-size: 1rem;
-}
-
-.callout-box p {
-  margin: 0;
-}
-
-.callout-box.tone-green {
-  background: var(--card-green-bg);
-  border-color: rgba(82, 183, 136, 0.16);
-}
-
-.callout-box.tone-blue {
-  background: var(--card-blue-bg);
-  border-color: rgba(158, 192, 247, 0.18);
-}
-
-.callout-box.tone-yellow {
-  background: var(--card-yellow-bg);
-  border-color: rgba(243, 198, 143, 0.18);
-}
-
-.callout-icon {
-  color: var(--accent-green);
-  flex-shrink: 0;
-  margin-top: 0.1rem;
-}
-
-.info-table-wrap {
-  width: 100%;
-  overflow-x: auto;
-  border-radius: var(--radius-md);
-  border: 1px solid var(--border-color);
-  background: #fff;
-}
-
-.info-table {
-  width: 100%;
-  min-width: 560px;
-  border-collapse: collapse;
-}
-
-.info-table th,
-.info-table td {
-  padding: 0.9rem 1rem;
-  text-align: left;
-  vertical-align: top;
-  border-bottom: 1px solid var(--border-color);
-}
-
-.info-table thead th {
-  background: var(--card-pink-bg);
-  color: var(--text-dark);
-}
-
-.info-table tbody tr:last-child td {
-  border-bottom: none;
-}
-
-.related-articles {
-  margin-top: 2rem;
-}
-
-.related-articles h3 {
-  font-size: 1.2rem;
-  margin-bottom: 0.9rem;
-}
-
-.related-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1rem;
-}
-
-.related-card {
-  display: flex;
-  flex-direction: column;
-  gap: 0.35rem;
-  padding: 1rem 1.1rem;
-  border-radius: var(--radius-md);
-  border: 1px solid var(--border-color);
-  background: var(--bg-main);
-  box-shadow: var(--shadow-sm);
-}
-
-.related-label {
-  font-size: 0.74rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--accent-green);
-}
-
-.back-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-top: 1.5rem;
-  color: var(--accent-green);
-  font-weight: 800;
-}
-
-@media (max-width: 768px) {
-  .article-main {
-    width: min(980px, calc(100% - 1rem));
-  }
-
-  .article-main article {
-    padding: 1.1rem;
-    border-radius: var(--radius-lg);
-  }
-
-  .article-meta-row span {
-    width: 100%;
-    justify-content: flex-start;
-  }
-
-  .article-toc {
-    padding: 1rem;
-  }
-
-  .related-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .article-cta-actions {
-    flex-direction: column;
-  }
-
-  .article-cta-actions .btn {
-    width: 100%;
-  }
-
-  .callout-box {
-    padding: 0.9rem;
-  }
-
-  .info-table {
-    min-width: 480px;
-  }
-}
-
-
-/* ==================================================
-   SYNC BADGE — Indikator Status Sinkronisasi Jadwal
-   ================================================== */
-
+/* SYNC BADGE */
 .sync-badge {
   display: inline-flex;
   align-items: center;
@@ -3492,7 +3050,6 @@ main {
   transition: all 0.4s ease;
 }
 
-/* Status: Live dari Google Calendar */
 .sync-live {
   background: #ECFDF5;
   color: #065F46;
@@ -3509,7 +3066,6 @@ main {
   flex-shrink: 0;
 }
 
-/* Status: Data manual (fallback) */
 .sync-manual {
   background: var(--card-yellow-bg);
   color: var(--accent-yellow);
@@ -3525,7 +3081,6 @@ main {
   flex-shrink: 0;
 }
 
-/* Status: Sedang loading */
 .sync-loading {
   background: var(--card-blue-bg);
   color: var(--accent-blue);
@@ -3564,10 +3119,6 @@ main {
   }
 }
 
-/* ==================================================
-   SKELETON TEXT — Animasi loading data jadwal
-   ================================================== */
-
 .skeleton-text {
   display: block;
   height: 1em;
@@ -3591,12 +3142,7 @@ main {
   }
 }
 
-/* ─── Swipe Horizontal Otomatis untuk Card di Mode Mobile ────────────────────
-   Berlaku untuk: Galeri Dokumentasi (.gallery-grid), Video Edukasi (.video-grid),
-   Daftar Kader (.cadres), Statistik (.stats-row), Pillar Cards (.pillars-section .grid),
-   dan Education Cards (#education-grid).
-   Diletakkan di akhir file agar urutan cascade menang atas aturan grid 1 kolom
-   sebelumnya, dan disinkronkan dengan setupAutoSwipe() di script.js. ────────── */
+/* ─── Swipe Horizontal Otomatis untuk Card di Mode Mobile ─── */
 @media (max-width: 768px) {
 
   .gallery-grid,
@@ -3629,7 +3175,6 @@ main {
     height: 0;
   }
 
-  /* Card anak: lebar tetap & tidak menyusut, sedikit "mengintip" agar terlihat bisa digeser */
   .gallery-grid>.gallery-card,
   .video-grid>.video-item,
   .cadres>.cadre-group-card {
@@ -3649,18 +3194,19 @@ main {
     max-width: 92%;
   }
 
+  /* Penyesuaian daftar nama kader di mode mobile */
   .cadre-name-list {
-    max-height: 13rem;
+    grid-template-columns: 1fr;
+    max-height: 18rem;
+    gap: 0.5rem;
   }
 
-  /* Pillar cards: lebar 82% agar sedikit mengintip, mendorong swipe */
   .pillars-section .grid>.pillar-card {
     flex: 0 0 82%;
     max-width: 82%;
     scroll-snap-align: center;
   }
 
-  /* Education cards: lebar 86% agar sedikit mengintip */
   #education-grid>.education-item {
     flex: 0 0 86%;
     max-width: 86%;
@@ -3668,21 +3214,13 @@ main {
   }
 }
 
-/* ==================================================
-   RAPIKAN TAMPILAN MOBILE — Penyempurnaan Tambahan
-   Diletakkan di akhir file agar cascade menang atas
-   aturan-aturan sebelumnya. Menargetkan HP kecil-menengah
-   (≤ 640px) dan HP sangat kecil (≤ 380px, mis. SE/iPhone mini).
-   ================================================== */
+/* Penyempurnaan Tambahan Mobile */
 @media (max-width: 640px) {
 
-  /* Dekorasi daun mengambang dimatikan di mobile: mengurangi
-     "noise" visual dan potensi tumpang tindih dengan teks/tombol. */
   .leaf-decor {
     display: none;
   }
 
-  /* Header lebih ringkas & tidak sempit di layar kecil */
   .site-header {
     top: 0.6rem;
     padding: 0.65rem 1rem;
@@ -3720,7 +3258,6 @@ main {
     font-size: 0.9rem;
   }
 
-  /* Kartu-kartu besar: padding lebih pas untuk layar kecil */
   .contact-card,
   .attendance-card {
     padding: 1.6rem 1.2rem;
@@ -3754,8 +3291,6 @@ main {
     font-size: 0.78rem;
   }
 
-  /* Tabel data (poktan & desa) sedikit lebih ringkas agar
-     kolom lebih banyak terlihat sebelum perlu digeser */
   .poktan-table,
   .poktan-table th,
   .poktan-table td {
@@ -3779,8 +3314,6 @@ main {
     font-size: 1.35rem;
   }
 
-  /* Peek pada kartu yang bisa digeser dibuat sedikit lebih lebar
-     supaya konten utama lebih mudah dibaca sekali lihat */
   .gallery-grid>.gallery-card,
   .video-grid>.video-item {
     flex-basis: 90%;
