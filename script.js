@@ -1243,12 +1243,22 @@ siteNav.querySelectorAll("a").forEach((link) => {
   });
 });
 
-// Dropdown "Lainnya": tutup otomatis saat klik di luar dropdown
-const navDropdown = document.querySelector(".nav-dropdown");
-if (navDropdown) {
+// Dropdown navbar: hanya satu grup terbuka dan semuanya tertutup saat klik di luar.
+const navDropdowns = document.querySelectorAll(".nav-dropdown");
+if (navDropdowns.length) {
+  navDropdowns.forEach((dropdown) => {
+    dropdown.addEventListener("toggle", () => {
+      if (!dropdown.open) return;
+      navDropdowns.forEach((otherDropdown) => {
+        if (otherDropdown !== dropdown) otherDropdown.removeAttribute("open");
+      });
+    });
+  });
+
   document.addEventListener("click", (event) => {
-    if (!navDropdown.contains(event.target)) {
-      navDropdown.removeAttribute("open");
+    const isClickInsideDropdown = Array.from(navDropdowns).some((dropdown) => dropdown.contains(event.target));
+    if (!isClickInsideDropdown) {
+      navDropdowns.forEach((dropdown) => dropdown.removeAttribute("open"));
     }
   });
 }

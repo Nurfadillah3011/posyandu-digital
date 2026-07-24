@@ -3,7 +3,7 @@
 const navToggle = document.querySelector(".nav-toggle");
 const siteNav = document.querySelector(".site-nav");
 
-if (navToggle && siteNav) {
+if (!document.querySelector("[data-shared-navbar]") && navToggle && siteNav) {
   navToggle.addEventListener("click", () => {
     const isOpen = siteNav.classList.toggle("is-open");
     navToggle.setAttribute("aria-expanded", String(isOpen));
@@ -18,7 +18,7 @@ if (navToggle && siteNav) {
 }
 
 const navDropdown = document.querySelector(".nav-dropdown");
-if (navDropdown) {
+if (!document.querySelector("[data-shared-navbar]") && navDropdown) {
   document.addEventListener("click", (event) => {
     if (!navDropdown.contains(event.target)) {
       navDropdown.removeAttribute("open");

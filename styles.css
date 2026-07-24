@@ -380,6 +380,113 @@ a {
   transform: translateY(-0.44rem) rotate(-45deg);
 }
 
+.article-meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.article-meta-item {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2rem;
+  padding: 0.35rem 0.7rem;
+  border: 1px solid var(--border-color);
+  border-radius: 999px;
+  background: var(--bg-main);
+  color: var(--text-muted);
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+/* Halaman artikel edukasi: tata baca yang lebih profesional dan konsisten. */
+.article-main {
+  width: min(980px, calc(100% - 2rem));
+  margin: 1.5rem auto 4rem;
+}
+
+.article-main > article {
+  padding: clamp(1.35rem, 4vw, 3rem);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xl);
+  background: var(--bg-surface);
+  box-shadow: var(--shadow-sm);
+}
+
+.breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem;
+  margin: 0 0 1.1rem;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+.breadcrumb a { color: var(--accent-green); font-weight: 700; }
+.crumb-sep { opacity: 0.55; }
+.crumb-current { color: var(--text-dark); font-weight: 700; }
+
+.article-hero {
+  padding-bottom: 1.7rem;
+  margin-bottom: 1.75rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.article-hero h1 {
+  max-width: 20ch;
+  margin: 0.8rem 0 1rem;
+  font-size: clamp(2rem, 5vw, 3.25rem);
+  line-height: 1.1;
+}
+
+.article-lead { max-width: 68ch; font-size: 1.05rem; line-height: 1.75; color: var(--text-muted); }
+
+.article-tag { display: inline-flex; padding: 0.35rem 0.7rem; border-radius: 999px; font-size: 0.76rem; font-weight: 800; }
+.article-tag.tone-yellow { background: var(--card-yellow-bg); color: var(--accent-yellow); }
+.article-tag.tone-green { background: var(--card-green-bg); color: var(--accent-green); }
+.article-tag.tone-blue { background: var(--card-blue-bg); color: var(--accent-blue); }
+
+.article-toc {
+  margin: 0 0 2rem;
+  padding: 1.25rem 1.35rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  background: var(--bg-main);
+}
+.article-toc h2 { margin: 0 0 0.8rem; font-size: 1.1rem; }
+.article-toc ol { display: grid; gap: 0.5rem; margin: 0; padding-left: 1.25rem; }
+.article-toc a { color: var(--accent-green); font-weight: 700; }
+
+.article-content { display: grid; gap: 1rem; color: var(--text-dark); }
+.article-content h2 { margin: 1.25rem 0 0; font-size: clamp(1.35rem, 3vw, 1.85rem); line-height: 1.25; scroll-margin-top: 7rem; }
+.article-content h3 { margin: 0.75rem 0 0; font-size: 1.15rem; scroll-margin-top: 7rem; }
+.article-content p { margin: 0; line-height: 1.75; }
+.article-content ul, .article-content ol { display: grid; gap: 0.55rem; margin: 0; padding-left: 1.3rem; line-height: 1.65; }
+
+.callout-box { display: flex; gap: 0.85rem; align-items: flex-start; padding: 1rem 1.1rem; border: 1px solid var(--border-color); border-radius: var(--radius-md); }
+.callout-box.tone-yellow { background: var(--card-yellow-bg); }
+.callout-box.tone-green { background: var(--card-green-bg); }
+.callout-box.tone-blue { background: var(--card-blue-bg); }
+.callout-box h4, .callout-box p { margin: 0; }
+.callout-icon { flex: 0 0 auto; color: var(--accent-green); }
+
+.info-table-wrap { overflow-x: auto; border: 1px solid var(--border-color); border-radius: var(--radius-md); }
+.info-table { width: 100%; min-width: 560px; border-collapse: collapse; }
+.info-table th, .info-table td { padding: 0.8rem 0.9rem; text-align: left; vertical-align: top; border-bottom: 1px solid var(--border-color); }
+.info-table th { background: var(--bg-main); font-size: 0.85rem; }
+.info-table tr:last-child td { border-bottom: 0; }
+
+@media (max-width: 640px) {
+  .article-main { width: min(980px, calc(100% - 1rem)); margin-top: 1rem; }
+  .article-main > article { padding: 1.15rem; border-radius: var(--radius-lg); }
+  .article-hero h1 { font-size: 2rem; }
+  .article-meta-item { width: 100%; }
+  .article-toc { padding: 1rem; }
+  .callout-box { padding: 0.9rem; }
+}
+
 @keyframes navMenuIn {
   from {
     opacity: 0;
